@@ -3,18 +3,31 @@
 </template>
 
 <script>
+
+const axios = require('axios');
+
 export default {
-    name: 'LoginComponent',
+    name: 'HomeComponent',
     data(){
         return{
             
         }
     },
+    mounted () {
+        this.getValues();
+    },
     methods: {
-        login(){
-            this.$router.push({name:'home'});
+        getValues () {
+            axios.get('http://127.0.0.1:5000/VALE', this.data, {
+            }).then(res => {
+                    console.log(res);
+            }).catch(err => {
+                    console.log(err.response);
+            });
+
         }
     }
+   
 }
 </script>
 
