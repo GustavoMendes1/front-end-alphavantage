@@ -27,6 +27,7 @@ export default {
     },
     data(){
         return{
+        dataset:[],
         chartData: [
             
         ['Hours', 'IBM'],
@@ -43,11 +44,10 @@ export default {
        
 
         ],
-         chartOptions: {
-        chart: {
+        chartOptions: {
           title: 'Company Performance',
           subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-        }
+        
       }
         }
     },
@@ -60,7 +60,15 @@ export default {
         getValues () {
             axios.get('http://127.0.0.1:5000/VALE', this.data, {
             }).then(res => {
-                    console.log(res);
+                    if(res.status == 200) {
+                        console.log(res.data.data);
+                        
+                        for(index in res.data.data) {
+                            this.chartData.push([res.data.data.hour, res.data.data.points]);
+                        }
+                        console.log(this.chartData.json());
+                    }
+                    
             }).catch(err => {
                     console.log(err.response);
             });
