@@ -3,13 +3,11 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import LoginComponent from './pages/Login/LoginComponent'
 import HomeComponent from './pages/Home/HomeComponent'
-import VueGoogleCharts from 'vue-google-charts'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import HighchartsVue from 'highcharts-vue'
 Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
-Vue.use(VueGoogleCharts)
 Vue.use(HighchartsVue)
 Vue.config.productionTip = false
 
