@@ -16,7 +16,9 @@
                         <h1></h1>
                         <button type="submit" id="Cadastro" class="buttons" >Cadastre-se</button>
                     </div>
+
                 </form>    
+                <grafica-component></grafica-component>
             </div>
         </div>
     </div>

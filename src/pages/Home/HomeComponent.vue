@@ -1,83 +1,71 @@
 <template>
-    <div>
-    <div class="barra"></div>
-    <p>Home</p>
-     <GChart
-        type="AreaChart"
-        :data="chartData"
-        :options="chartOptions"
-    />
-</div>
-    
+  <div class="small">
+    <line-chart :chart-data="datacollection" :height="100"></line-chart>
+  </div>
 </template>
 
-<script src="vue.js"></script>
-<script src="vue-google-charts/dist/vue-google-charts.browser.js"></script>
 <script>
 
 const axios = require('axios');
-
-import { GChart } from 'vue-google-charts'
-
+import LineChart from './LineChart.js'
 
 export default {
-    name: 'HomeComponent',
-    components: {
-        GChart
-    },
-    data(){
-        return{
-        dataset:[],
-        chartData: [
-            
-        ['Hours', 'IBM'],
-        ['16:10', 123.6224],
-        ['16:15', 124.0000],
-        ['16:20', 124.0000],
-        ['16:30', 124.0000],
-        ['16:35', 123.6100],
-        ['16:40', 123.6300],
-        ['16:55\n 12/03', 123.6100],
-        ['17:30', 124.1600],
-        ['18:15', 123.9300],
-        ['18:35', 123.7100],
-       
+  components: {
+    LineChart
+  },
+  data(){
+    return {
+      datacollection: null,
+      dataAux:[],
+      labelAux:[],
+      url:'http://127.0.0.1:5000/VALE',
 
-        ],
-        chartOptions: {
-          title: 'Company Performance',
-          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-        
-      }
-        }
-    },
-    mounted () {
-        this.getValues();
-       
-        
-    },
-    methods: {
-        getValues () {
-            axios.get('http://127.0.0.1:5000/VALE', this.data, {
+    }
+  },
+  mounted () {
+    this.fillData()
+  },
+  methods: {
+
+    fillData ()
+    { 
+        axios.get(this.url, this.data, {
             }).then(res => {
                     if(res.status == 200) {
-                        console.log(res.data.data);
+                       
+                        const json = res.data.data;
+                        console.log(json);
+ 
+                        for(var i=json.length-1; i>-1; i--) {
                         
-                        for(index in res.data.data) {
-                            this.chartData.push([res.data.data.hour, res.data.data.points]);
+                        //this.labelAux.push(json[1].hour);
+                        //this.dataAux.push(parseFloat(json[1].points));
+
+                        this.labelAux.push(json[i].hour);
+                        this.dataAux.push(parseFloat(json[i].points));
+                      
                         }
-                        console.log(this.chartData.json());
+                        this.datacollection = {
+                            labels: this.labelAux,
+                            datasets: [
+                            {
+                                label: 'IBM',
+                                backgroundColor: '#FF0066',
+                                data: this.dataAux
+                            },
+                            ]
+                        }
                     }
-                    
             }).catch(err => {
                     console.log(err.response);
-            });
-        }
+        });
+
+        
     }
+  }
 }
 </script>
 
 <style lang="scss" src="./style.scss" scoped>
 
 </style>
-
