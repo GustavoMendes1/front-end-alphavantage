@@ -2,7 +2,8 @@
     <div class ="container" >
         <header class ="barra">
             <div class="menu-item"><a href="#/home">Home</a></div>
-            <div class="menu-item"><a href="#/home">Empresas</a></div>
+            <div class="menu-item"><a>Empresas</a></div>
+
         </header>
         
          <div class="chart">
@@ -26,6 +27,7 @@ export default {
       datacollection: null,
       dataAux:[],
       labelAux:[],
+      companies:['IBM','VALE'],
       companyDefault: 'IBM',
       url:'http://127.0.0.1:5000/',
 
