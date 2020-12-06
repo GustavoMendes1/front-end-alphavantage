@@ -2,7 +2,9 @@
     <div class ="container" >
         <header class ="barra">
             <div class="menu-item"><a href="#/home">Home</a></div>
+            <div class="menu-item"><a href="#/home">Empresas</a></div>
         </header>
+        
          <div class="chart">
             <line-chart :chart-data="datacollection" :height="200"></line-chart>
         </div>
@@ -13,6 +15,7 @@
 
 const axios = require('axios');
 import LineChart from './LineChart.js'
+
 
 export default {
   components: {
@@ -48,11 +51,10 @@ export default {
                         }
                         this.datacollection = {
                             labels: this.labelAux,
-                            color: '#EEEEEE',
                             datasets: [
                             {
                                 label: 'IBM',
-                                backgroundColor: '#c0c0c0',
+                                backgroundColor: '#FF0066',
                                 data: this.dataAux
                             },
                             ]

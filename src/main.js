@@ -6,6 +6,7 @@ import HomeComponent from './pages/Home/HomeComponent'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import HighchartsVue from 'highcharts-vue'
+
 Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
 Vue.use(HighchartsVue)
