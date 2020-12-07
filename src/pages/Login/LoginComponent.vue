@@ -3,22 +3,16 @@
     <div class="main">
         <div class="login">
             <div class="content-login">
-                <form>
-                    <div class="login-body">
-                   
-                        <h2 >Login</h2>
+                <form class="form">   
                         <input  type="text"  placeholder="Usuário" class="input-text">
-                        <h1></h1>
-                        <input type="password" placeholder="Senha"  class="input-text" >
-                        <h1></h1>
-                        <a href='' target=''>Recuperar senha.</a><br/>
+                        <input id= "pass" type="password" placeholder="Senha"  class="input-text" >
+                
                         <button type="submit" id="Login" class="buttons" @click.prevent="login">Login</button>
-                        <h1></h1>
                         <button type="submit" id="Cadastro" class="buttons" >Cadastre-se</button>
-                    </div>
+                
+                </form>        
+                
 
-                </form>    
-                <grafica-component></grafica-component>
             </div>
         </div>
     </div>
