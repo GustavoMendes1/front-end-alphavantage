@@ -1,7 +1,7 @@
 @import '@/assets/scss/_main';
 @import '@/assets/scss/_colors';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 .barra {
     background-color: black;
     position: relative;
@@ -30,5 +30,30 @@
   }
   .container{
     height: 100vh;
+    justify-content: center;
   }
-  
+ 
+ .informations{
+    margin-top: 10px;
+    margin-left: 40px;
+    font-family:'Roboto', 'sans-serif';
+    widows: 30px;
+  }
+  button {
+    background-color: #4C0077b6; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 20px;
+  }
+  .container-buttons{
+    align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }

@@ -4,7 +4,6 @@
     justify-content: center;
     display: flex;
     width: 100%;
-    justify-content: center;
     align-items: center;
     background-color: $gray;
   
@@ -13,8 +12,8 @@
         width: 500px;
         height: 500px;
         background-color: white;
-        flex-direction: columns;
-        display: flex;
+        //flex-direction: columns;
+        justify-content: center;
     }
 }
 
@@ -26,7 +25,7 @@
 form{
     width: 100%;
     left: 50%;
-
+    justify-content: center;
 }
 .input-text{
     width: 80%;
