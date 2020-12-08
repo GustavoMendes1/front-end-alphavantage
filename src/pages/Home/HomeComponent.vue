@@ -1,21 +1,21 @@
 <template>
     <div class ="container" >
         <header class ="barra">
-            <div class="menu-item"><a href="#/home">Home</a></div>
-            <div class="menu-item"><a href="#/home">Empresas</a></div>
+            <div class="menu-item"><a href="#/home">HOME</a></div>
         </header>
-        <div class="container-buttons">
-        <button v-on:click="showCompany('IBM')">IBM</button>
-        <button v-on:click="showCompany('VALE')">Vale</button>
-        <button v-on:click="showCompany('ITUB')">Itaú</button>
-        </div>
-         <div class="chart">
-            <line-chart :chart-data="datacollection" :height="200"></line-chart>
-            
-            <div class="informations">
-              <p id="high">Alta:</p>
-              <p>Baixa:</p> 
+        <div class="body">
+          <div class="barraLateral">
+            <ul>
+              <li><a class="item" v-on:click="showCompany('IBM')">IBM</a></li>
+              <li><a class="item" v-on:click="showCompany('VALE')">Vale</a></li>
+              <li><a class="item" v-on:click="showCompany('ITUB')">Itaú</a></li>
+            </ul>
+          </div>
+          <div class="bodyContainer">
+            <div class="chart">
+                <line-chart :chart-data="datacollection" :height="200"></line-chart>
             </div>
+          </div>
         </div>
     </div>
 </template>
@@ -59,7 +59,7 @@ export default {
                         console.log(json);
 
                         for(var i=json.length-1; i>-1; i--) {
-                            this.labelAux.push(json[i].hour);
+                            this.labelAux.push(json[i].dateTime);
                             this.dataAux.push(parseFloat(json[i].points));                    
                         }
                         this.datacollection = {
@@ -68,7 +68,7 @@ export default {
                             datasets: [
                             {
                                 label: this.companyDefault,
-                                backgroundColor: '#0077b6',
+                                backgroundColor: '#6a6a6a',
                                 data: this.dataAux
                             },
                             ]

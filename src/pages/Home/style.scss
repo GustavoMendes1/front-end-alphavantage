@@ -14,12 +14,20 @@
     align-items: center;
   }
 
+  .barraLateral{
+    width: 15%;
+    background-color: #2c2c2c;
+    text-align: center;
+  }
+  .bodyContainer{
+    height: 100vh;
+    width: 100%;
+  }
   .chart {
     max-width: 800px;
     margin:  50px auto;
     box-shadow: 0 2px 10px rgba(0,0,0, 0.30);
   }
-
   .menu-item a{
     color: $primaryText;
     padding:0px 20px;
@@ -28,9 +36,16 @@
     text-decoration: none;
     font-family:'montserrat', 'sans-serif';
   }
+  .body{
+    display: flex;
+    position: relative;
+  }
   .container{
     height: 100vh;
-    justify-content: center;
+    //justify-content: center;
+    //display: flex;
+    position: relative;
+
   }
  
  .informations{
@@ -39,16 +54,23 @@
     font-family:'Roboto', 'sans-serif';
     widows: 30px;
   }
-  button {
-    background-color: #4C0077b6; 
-    border: none;
+ 
+  .item {
+    background-color: #2c2c2c;
     color: white;
-    padding: 15px 32px;
+    padding: 20px 5px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     font-size: 16px;
-    margin-left: 20px;
+    
+    font-family:'montserrat', 'sans-serif';
+    position: relative;
+  }
+
+  a:hover{
+    background-color:#3f3f3f;
+
   }
   .container-buttons{
     align-items: center;
