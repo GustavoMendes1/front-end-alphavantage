@@ -12,6 +12,10 @@
             </ul>
           </div>
           <div class="bodyContainer">
+            <div class="half-circle-spinner" v-show="showLoad">
+              <div class="circle circle-1"></div>
+              <div class="circle circle-2"></div>
+            </div>
             <div class="chart">
                 <line-chart :chart-data="datacollection" :height="200"></line-chart>
             </div>
@@ -37,7 +41,7 @@ export default {
       labelAux:[],
       companyDefault: 'IBM',
       url:'http://127.0.0.1:5000/',
-
+      showLoad:false
     }
   },
   mounted () {
@@ -50,6 +54,7 @@ export default {
     },
     fillData ()
     { 
+        this.showLoad = true;
         axios.get(this.url+this.companyDefault, this.data, {
             }).then(res => {
                     this.dataAux=[];
@@ -68,7 +73,7 @@ export default {
                             datasets: [
                             {
                                 label: this.companyDefault,
-                                backgroundColor: '#6a6a6a',
+                                backgroundColor: '#0077b6',
                                 data: this.dataAux
                             },
                             ]
@@ -76,6 +81,8 @@ export default {
                     }
             }).catch(err => {
                     console.log(err.response);
+        }).finally(() => {
+            this.showLoad = false;
         });
 
         
