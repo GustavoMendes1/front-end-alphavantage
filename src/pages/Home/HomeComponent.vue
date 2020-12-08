@@ -16,6 +16,13 @@
               <div class="circle circle-1"></div>
               <div class="circle circle-2"></div>
             </div>
+            <div class="buttonContainer">
+              <button class="button">1 min</button>
+              <button class="button">5 min</button>
+              <button class="button">15 min</button>
+              <button class="button">30 min</button>
+              <button class="button">60 min</button>
+            </div>
             <div class="chart">
                 <line-chart :chart-data="datacollection" :height="200"></line-chart>
             </div>
@@ -40,6 +47,7 @@ export default {
       dataAux:[],
       labelAux:[],
       companyDefault: 'IBM',
+      timeDefaault:'5 min',
       url:'http://127.0.0.1:5000/',
       showLoad:false
     }
