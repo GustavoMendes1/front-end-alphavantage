@@ -13,6 +13,7 @@
             </ul>
           </div>
           <div class="bodyContainer">
+            <h3 v-show="showError">Ops...Ocorreu um erro! Recarregue a página.</h3>
             <div class="half-circle-spinner" v-show="showLoad">
               <div class="circle circle-1"></div>
               <div class="circle circle-2"></div>
@@ -52,6 +53,7 @@ export default {
       baseURL:'http://127.0.0.1:5000/',
       showLoad:false,
       showButtons:false,
+      showError:false,
       url:null
     }
   },
@@ -75,6 +77,7 @@ export default {
     fillData ()
     { 
         this.showLoad = true;
+        this.showError = false;
         if(this.companyDefault!="Bovespa"){
           this.url = this.baseURL+ this.companyDefault + this.timeDefault;
           this.showButtons=true;
@@ -104,13 +107,13 @@ export default {
                                 label: this.companyDefault + this.timeDefault.replace("/"," "),
                                 backgroundColor: '#0077b6',
                                 data: this.dataAux,
-                                
                             },
                             ]
                         }
                     }
             }).catch(err => {
                     console.log(err.response);
+                    this.showError = true;
         }).finally(() => {
             this.showLoad = false;
         });       

@@ -24,7 +24,7 @@
     align-items: center;
   }
   .chart {
-    max-width: 1000px;
+    max-width: 1200px;
     margin:  40px auto;
     box-shadow: 0 2px 10px rgba(0,0,0, 0.30);
   }
@@ -63,7 +63,11 @@
     margin-left: 30px;
     box-shadow: 0 2px 10px rgba(0,0,0, 0.10);
   }
- 
+  h3{
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+  }
  .informations{
     margin-top: 10px;
     margin-left: 40px;
@@ -85,7 +89,10 @@
 
   a:hover{
     background-color:#3f3f3f;
-
+  }
+  button:hover{
+    background-color:#0077b6;
+    color: white;
   }
   .container-buttons{
     align-items: center;
