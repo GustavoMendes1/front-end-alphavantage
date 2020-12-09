@@ -50,11 +50,13 @@ export default {
       labelAux:[],
       companyDefault: 'Bovespa',
       timeDefault:'/5min',
+      lastTime:null,
       baseURL:'http://127.0.0.1:5000/',
       showLoad:false,
       showButtons:false,
       showError:false,
-      url:null
+      url:null,
+      label:null,
     }
   },
   mounted () {
@@ -81,10 +83,11 @@ export default {
         if(this.companyDefault!="Bovespa"){
           this.url = this.baseURL+ this.companyDefault + this.timeDefault;
           this.showButtons=true;
+          this.label = this.companyDefault + this.timeDefault.replace("/"," ");
         }else{
           this.url = this.baseURL;
           this.showButtons=false;
-          
+          this.label = this.companyDefault
         }
           
         axios.get(this.url, this.data, {
@@ -104,7 +107,7 @@ export default {
                             
                             datasets: [
                             {
-                                label: this.companyDefault + this.timeDefault.replace("/"," "),
+                                label: this.label,
                                 backgroundColor: '#0077b6',
                                 data: this.dataAux,
                             },
