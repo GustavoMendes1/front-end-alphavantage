@@ -6,6 +6,7 @@
         <div class="body">
           <div class="barraLateral">
             <ul>
+              <li><a class="item" v-on:click="showCompany('Bovespa')">Bovespa</a></li>
               <li><a class="item" v-on:click="showCompany('IBM')">IBM</a></li>
               <li><a class="item" v-on:click="showCompany('VALE')">Vale</a></li>
               <li><a class="item" v-on:click="showCompany('ITUB')">Itaú</a></li>
@@ -16,12 +17,12 @@
               <div class="circle circle-1"></div>
               <div class="circle circle-2"></div>
             </div>
-            <div class="buttonContainer">
-              <button class="button">1 min</button>
-              <button class="button">5 min</button>
-              <button class="button">15 min</button>
-              <button class="button">30 min</button>
-              <button class="button">60 min</button>
+            <div class="buttonContainer" v-show="showButtons">
+              <button class="button" v-on:click="showTime('/1min')">1 min</button>
+              <button class="button" v-on:click="showTime('/5min')">5 min</button>
+              <button class="button" v-on:click="showTime('/15min')">15 min</button>
+              <button class="button" v-on:click="showTime('/30min')">30 min</button>
+              <button class="button" v-on:click="showTime('/60min')">60 min</button>
             </div>
             <div class="chart">
                 <line-chart :chart-data="datacollection" :height="200"></line-chart>
@@ -46,24 +47,44 @@ export default {
       datacollection: null,
       dataAux:[],
       labelAux:[],
-      companyDefault: 'IBM',
-      timeDefaault:'5 min',
-      url:'http://127.0.0.1:5000/',
-      showLoad:false
+      companyDefault: 'Bovespa',
+      timeDefault:'/5min',
+      baseURL:'http://127.0.0.1:5000/',
+      showLoad:false,
+      showButtons:false,
+      url:null
     }
   },
   mounted () {
     this.fillData();
   },
   methods: {
+    showTime:function(time){
+      if(this.timeDefault != time){
+        this.timeDefault = time;
+        this.fillData();  
+      }
+    },
     showCompany:function(company){
-      this.companyDefault = company;
-      this.fillData();
+      if(this.companyDefault != company){
+        this.companyDefault = company;
+        this.fillData();
+      }
+      
     },
     fillData ()
     { 
         this.showLoad = true;
-        axios.get(this.url+this.companyDefault, this.data, {
+        if(this.companyDefault!="Bovespa"){
+          this.url = this.baseURL+ this.companyDefault + this.timeDefault;
+          this.showButtons=true;
+        }else{
+          this.url = this.baseURL;
+          this.showButtons=false;
+          
+        }
+          
+        axios.get(this.url, this.data, {
             }).then(res => {
                     this.dataAux=[];
                     this.labelAux=[];
@@ -80,9 +101,10 @@ export default {
                             
                             datasets: [
                             {
-                                label: this.companyDefault,
+                                label: this.companyDefault + this.timeDefault.replace("/"," "),
                                 backgroundColor: '#0077b6',
-                                data: this.dataAux
+                                data: this.dataAux,
+                                
                             },
                             ]
                         }
@@ -91,9 +113,7 @@ export default {
                     console.log(err.response);
         }).finally(() => {
             this.showLoad = false;
-        });
-
-        
+        });       
     }
   }
 }
