@@ -17,6 +17,7 @@ Este projeto consiste no front-end que exibe os valores da Bovespa e de empresas
 ## Windows
 
 ```shell
-cd front-end
 git clone https://github.com/GustavoMendes1/front-end-alphavantage.git
+cd front-end-alphavantage
 npm install
+npm run serve
