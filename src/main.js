@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
-import LoginComponent from './pages/Login/LoginComponent'
-import HomeComponent from './pages/Home/HomeComponent'
+import LoginComponent from './pages/Login/LoginPage'
+import HomeComponent from './pages/Home/HomePage'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import HighchartsVue from 'highcharts-vue'
@@ -16,8 +16,8 @@ Vue.config.productionTip = false
 
 
 const routes = [
-  {path:'/', name:'login', component: LoginComponent},
-  {path:'/home', name: 'home',component: HomeComponent},
+  {path:'/', name:'login', component: LoginPage},
+  {path:'/home', name: 'home',component: HomePage},
 
 ]
 
