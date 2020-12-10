@@ -6,7 +6,7 @@ Este projeto consiste no front-end que exibe os valores da Bovespa e de empresas
 - [Vue](https://vuejs.org/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Vue CLI](https://cli.vuejs.org/)
-- [NPM](https://www.npmjs.com/)
+- [NPM](https://nodejs.org/en/)
 - [Axios](https://www.npmjs.com/package/axios)
 - [LineChart](https://www.chartjs.org/docs/latest/charts/line.html)
 
